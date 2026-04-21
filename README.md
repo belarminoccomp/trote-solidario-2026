@@ -1,13 +1,14 @@
 # Gabriel Belarmino Martins | Portfolio de Projetos
 
-Este repositorio agora funciona como uma vitrine tecnica para apresentar projetos, estudos e evolucao pratica em desenvolvimento web e logica de programacao.
+Este repositorio funciona como uma vitrine tecnica para apresentar projetos, estudos e evolucao pratica em desenvolvimento web e logica de programacao.
 
 ## O que esta publicado
 
 - `index.html`: pagina principal do portfolio
 - `styles.css`: identidade visual da home
 - `projetos/trote-unifacef/`: site multipagina do Trote Solidario UniFACEF 2026
-- `projetos/portugol/`: colecao de exercicios em Portugol e uma pagina propria para navegacao
+- `projetos/portugol/`: trilha principal de exercicios em Portugol
+- `projetos/portugol-estudos-complementares/`: segunda trilha com exercicios adicionais em Portugol
 
 ## Destaques do portfolio
 
@@ -25,7 +26,7 @@ Entrada principal:
 
 - `projetos/trote-unifacef/Trote-UniFACEF-Oficial.html`
 
-### 2. Avanco em Portugol
+### 2. Fundamentos de algoritmos em Portugol
 
 Colecao com 10 exercicios que mostram progressao em:
 
@@ -38,6 +39,20 @@ Colecao com 10 exercicios que mostram progressao em:
 Entrada principal:
 
 - `projetos/portugol/index.html`
+
+### 3. Estudos complementares em Portugol
+
+Colecao com 11 exercicios adicionais, com foco maior em:
+
+- estruturas de decisao
+- classificacao por regras
+- calendarios e selecao por casos
+- reajustes e percentuais
+- simulacoes de atendimento e consumo
+
+Entrada principal:
+
+- `projetos/portugol-estudos-complementares/index.html`
 
 ## Objetivo deste repositorio
 
