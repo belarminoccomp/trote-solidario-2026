@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="troteUniFACEF.css" />
+    <title>Trote Solidário - Calculadora</title>
+  </head>
+  <body>
+    <nav class="menu-principal">
+      <div class="menu-container">
+        <a href="index.html" class="logo"> Trote 2026 </a>
+        <ul class="lista">
+          <li><a href="index.html"> Início </a></li>
+          <li><a href="introducao.html"> Introdução </a></li>
+          <li><a href="formato.html"> Formato </a></li>
+          <li><a href="equipes.html"> Equipes </a></li>
+          <li><a href="provas.html"> Provas & Metas </a></li>
+          <li><a href="integracao.html"> Integração </a></li>
+          <li><a href="cronograma.html"> Cronograma </a></li>
+          <li><a href="calculadora.html"> Calculadora </a></li>
+        </ul>
+      </div>
+    </nav>
+    <main class="principal">
+      <section class="prova">
+        <h3>🧮 Calculadora de Pontos</h3>
+
+        <label> Pacotes de Arroz (5kg): </label>
+        <input type="number" id="arroz" value="0" min="0" /> <br /><br />
+
+        <label> Pacotes de Feijão (2kg): </label>
+        <input type="number" id="feijao" value="0" min="0" /> <br /><br />
+
+        <label> Óleo de Soja (unidades): </label>
+        <input type="number" id="oleo" value="0" min="0" /> <br /><br />
+
+        <label> Pacotes de Macarrão (500g): </label>
+        <input type="number" id="macarrao" value="0" min="0" /> <br /><br />
+
+        <button onclick="calcularPontos()">Calcular</button>
+        <p id="resultado"></p>
+      </section>
+    </main>
+     <footer class="rodape">
+      <p>Coordenação Trote Solidário 2026: trotesolidario@facef.br</p>
+      <p>Uni-FACEF - Centro Universitário Municipal de Franca</p>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
