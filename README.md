@@ -1,0 +1,46 @@
+# Trote Solidario 2026
+
+Pagina web interativa em HTML para aplicacao de um simulado com 40 questoes objetivas, correcao automatica e destaque visual das respostas.
+
+## Sobre o projeto
+
+Este repositorio publica uma prova interativa em formato de formulario local, pronta para abrir no navegador e tambem compativel com GitHub Pages.
+
+Recursos principais:
+
+- 40 questoes de multipla escolha organizadas em 4 temas
+- correcao automatica ao final da tentativa
+- destaque para respostas corretas, incorretas e em branco
+- layout responsivo para computador e celular
+- funcionamento sem dependencias externas
+
+## Arquivos principais
+
+- `index.html`: pagina principal do simulado
+
+## Como usar localmente
+
+1. Baixe ou clone este repositorio.
+2. Abra o arquivo `index.html` em qualquer navegador moderno.
+3. Marque as alternativas desejadas.
+4. Clique em `Enviar e corrigir` para ver a nota e o gabarito visual.
+
+## Publicacao com GitHub Pages
+
+Para publicar este projeto com GitHub Pages:
+
+1. Acesse as configuracoes do repositorio no GitHub.
+2. Entre em `Pages`.
+3. Em `Build and deployment`, selecione a branch `main`.
+4. Escolha a pasta raiz `/ (root)`.
+5. Salve as configuracoes.
+
+Depois disso, a pagina devera ficar disponivel em:
+
+`https://gabsaatechlab.github.io/trote-solidario-2026/`
+
+## Autor
+
+- Gabriel Belarmino Martins
+- GitHub: [@gabsaatechlab](https://github.com/gabsaatechlab)
+- E-mail: gabrielmartins160108@gmail.com

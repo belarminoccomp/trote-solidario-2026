@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulado Interativo - 1o Ano</title>
+  <style>
+    :root {
+      --bg: #f5efe4;
+      --bg-accent: #efe1c6;
+      --paper: #fffaf0;
+      --paper-strong: #ffffff;
+      --text: #1f2933;
+      --muted: #5c6b73;
+      --primary: #14532d;
+      --primary-soft: #dff3e4;
+      --primary-strong: #0f3f22;
+      --danger: #8f1d1d;
+      --danger-soft: #fde2e2;
+      --warning: #9a6700;
+      --warning-soft: #fff1cc;
+      --border: #d8c8ab;
+      --shadow: 0 18px 40px rgba(82, 55, 23, 0.12);
+      --radius-lg: 24px;
+      --radius-md: 16px;
+      --radius-sm: 12px;
+      --max-width: 1080px;
+      --font-heading: Georgia, "Times New Roman", serif;
+      --font-body: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(255, 255, 255, 0.85), transparent 35%),
+        radial-gradient(circle at top right, rgba(225, 239, 212, 0.7), transparent 28%),
+        linear-gradient(180deg, var(--bg-accent), var(--bg));
+      min-height: 100vh;
+    }
+
+    .page-shell {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 32px 16px 64px;
+    }
+
+    .hero {
+      background: linear-gradient(140deg, rgba(255, 250, 240, 0.98), rgba(248, 241, 226, 0.95));
+      border: 1px solid rgba(155, 122, 74, 0.24);
+      border-radius: calc(var(--radius-lg) + 4px);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto -10% -35% auto;
+      width: 260px;
+      height: 260px;
+      background: radial-gradient(circle, rgba(20, 83, 45, 0.16), transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      display: grid;
+      gap: 20px;
+      padding: 32px 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      width: fit-content;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--primary-strong);
+      background: rgba(20, 83, 45, 0.11);
+    }
+
+    h1 {
+      margin: 0;
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      line-height: 1.05;
+      color: #382312;
+    }
+
+    .intro {
+      margin: 0;
+      max-width: 70ch;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.5fr minmax(240px, 320px);
+      gap: 20px;
+      align-items: start;
+    }
+
+    .info-card,
+    .results-card,
+    .section-card,
+    .question-card {
+      background: var(--paper);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+    }
+
+    .info-card {
+      padding: 20px;
+      background: linear-gradient(180deg, #fffdf7, #f7f0e3);
+    }
+
+    .info-card h2,
+    .results-card h2 {
+      margin: 0 0 10px;
+      font-size: 1.15rem;
+      color: #4d3216;
+    }
+
+    .info-list {
+      margin: 0;
+      padding-left: 18px;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    .info-list li + li {
+      margin-top: 6px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    button {
+      appearance: none;
+      border: 0;
+      cursor: pointer;
+      border-radius: 999px;
+      padding: 14px 22px;
+      font: inherit;
+      font-weight: 700;
+      transition: transform 140ms ease, box-shadow 140ms ease, background 140ms ease;
+    }
+
+    button:hover {
+      transform: translateY(-1px);
+    }
+
+    button:focus-visible,
+    input:focus-visible + .option-copy {
+      outline: 3px solid rgba(20, 83, 45, 0.22);
+      outline-offset: 3px;
+    }
+
+    .primary-button {
+      background: linear-gradient(180deg, var(--primary), #0e4423);
+      color: #fffdf7;
+      box-shadow: 0 12px 22px rgba(20, 83, 45, 0.24);
+    }
+
+    .secondary-button {
+      background: rgba(255, 255, 255, 0.8);
+      color: #4a3320;
+      border: 1px solid rgba(124, 101, 70, 0.24);
+    }
+
+    .results-card {
+      padding: 20px;
+      position: sticky;
+      top: 18px;
+      background:
+        linear-gradient(180deg, rgba(245, 250, 240, 0.96), rgba(255, 250, 240, 0.98));
+    }
+
+    .results-card p {
+      margin: 0;
+      line-height: 1.65;
+      color: var(--muted);
+    }
+
+    .results-badges {
+      display: grid;
+      gap: 10px;
+      margin: 18px 0;
+    }
+
+    .badge {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      padding: 14px 16px;
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(124, 101, 70, 0.14);
+    }
+
+    .badge strong {
+      font-size: 1.35rem;
+      color: #4a2f13;
+    }
+
+    .badge span {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .status-note {
+      margin-top: 16px;
+      padding: 14px 16px;
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.68);
+      border: 1px dashed rgba(124, 101, 70, 0.32);
+      color: #62482a;
+      line-height: 1.6;
+    }
+
+    .status-note.warning {
+      background: var(--warning-soft);
+      border-style: solid;
+      border-color: rgba(154, 103, 0, 0.24);
+      color: #7a5200;
+    }
+
+    .status-note.success {
+      background: var(--primary-soft);
+      border-style: solid;
+      border-color: rgba(20, 83, 45, 0.24);
+      color: var(--primary-strong);
+    }
+
+    .summary-list {
+      margin-top: 14px;
+      padding-left: 18px;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .quiz-form {
+      margin-top: 28px;
+      display: grid;
+      gap: 28px;
+    }
+
+    .section-card {
+      padding: 24px;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(250, 244, 232, 0.94));
+    }
+
+    .section-header {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 16px;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(124, 101, 70, 0.18);
+    }
+
+    .section-header h2 {
+      margin: 0;
+      font-family: var(--font-heading);
+      font-size: clamp(1.4rem, 2.8vw, 2rem);
+      color: #4d3216;
+    }
+
+    .section-meta {
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(20, 83, 45, 0.1);
+      color: var(--primary-strong);
+      font-size: 0.94rem;
+      font-weight: 700;
+    }
+
+    .question-list {
+      display: grid;
+      gap: 18px;
+    }
+
+    .question-card {
+      padding: 18px;
+      background: rgba(255, 255, 255, 0.86);
+      transition: border-color 160ms ease, transform 160ms ease;
+    }
+
+    .question-card:hover {
+      transform: translateY(-1px);
+    }
+
+    .question-card.unanswered {
+      border-color: rgba(154, 103, 0, 0.4);
+      background: linear-gradient(180deg, #fffdf7, #fff3d9);
+    }
+
+    .question-card.correct {
+      border-color: rgba(20, 83, 45, 0.28);
+    }
+
+    .question-card.incorrect {
+      border-color: rgba(143, 29, 29, 0.26);
+    }
+
+    fieldset {
+      border: 0;
+      margin: 0;
+      padding: 0;
+      min-width: 0;
+    }
+
+    legend {
+      width: 100%;
+      margin-bottom: 14px;
+      padding: 0;
+    }
+
+    .question-index {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 42px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: #f1e7d4;
+      color: #6b4616;
+      font-weight: 800;
+      font-size: 0.92rem;
+      margin-bottom: 10px;
+    }
+
+    .question-text {
+      margin: 0;
+      font-size: 1.04rem;
+      line-height: 1.65;
+      color: var(--text);
+    }
+
+    .options {
+      display: grid;
+      gap: 12px;
+    }
+
+    .option {
+      display: block;
+      cursor: pointer;
+    }
+
+    .option input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .option-copy {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 12px;
+      align-items: start;
+      padding: 14px 16px;
+      border: 1px solid rgba(124, 101, 70, 0.2);
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.94);
+      transition: background 140ms ease, border-color 140ms ease, transform 140ms ease;
+    }
+
+    .option:hover .option-copy {
+      transform: translateY(-1px);
+      border-color: rgba(20, 83, 45, 0.28);
+    }
+
+    .option input:checked + .option-copy {
+      background: #edf5ee;
+      border-color: rgba(20, 83, 45, 0.4);
+      box-shadow: inset 0 0 0 1px rgba(20, 83, 45, 0.1);
+    }
+
+    .option-letter {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: #f3ead9;
+      color: #6d4518;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    .option-text {
+      line-height: 1.58;
+      word-break: break-word;
+    }
+
+    .option.is-correct .option-copy {
+      background: linear-gradient(180deg, #eef9f0, #dff3e4);
+      border-color: rgba(20, 83, 45, 0.42);
+    }
+
+    .option.is-correct .option-letter {
+      background: var(--primary);
+      color: #ffffff;
+    }
+
+    .option.is-incorrect .option-copy {
+      background: linear-gradient(180deg, #fff3f3, #fde2e2);
+      border-color: rgba(143, 29, 29, 0.35);
+    }
+
+    .option.is-incorrect .option-letter {
+      background: var(--danger);
+      color: #ffffff;
+    }
+
+    .feedback {
+      margin-top: 14px;
+      padding: 12px 14px;
+      border-radius: var(--radius-md);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      display: none;
+    }
+
+    .feedback.visible {
+      display: block;
+    }
+
+    .feedback.success {
+      background: var(--primary-soft);
+      color: var(--primary-strong);
+    }
+
+    .feedback.warning {
+      background: var(--warning-soft);
+      color: #7a5200;
+    }
+
+    .feedback.error {
+      background: var(--danger-soft);
+      color: #7a1919;
+    }
+
+    .footer-note {
+      margin-top: 20px;
+      text-align: center;
+      color: #72563a;
+      font-size: 0.94rem;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .results-card {
+        position: static;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page-shell {
+        padding: 20px 12px 48px;
+      }
+
+      .hero-inner,
+      .section-card,
+      .results-card,
+      .info-card {
+        padding: 18px;
+      }
+
+      .question-card {
+        padding: 16px;
+      }
+
+      .actions {
+        flex-direction: column;
+      }
+
+      button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page-shell">
+    <section class="hero" aria-labelledby="page-title">
+      <div class="hero-inner">
+        <span class="eyebrow">Simulado Interativo</span>
+        <div class="hero-grid">
+          <div>
+            <h1 id="page-title">Simulado do 1o Ano</h1>
+            <p class="intro" id="intro-text"></p>
+            <div class="actions">
+              <button type="button" class="primary-button" id="submit-button">Enviar e corrigir</button>
+              <button type="button" class="secondary-button" id="reset-button">Limpar respostas</button>
+            </div>
+          </div>
+          <aside class="results-card" aria-live="polite">
+            <h2>Resultado</h2>
+            <p>Marque suas respostas e, quando terminar, clique em <strong>Enviar e corrigir</strong>.</p>
+            <div class="results-badges">
+              <div class="badge">
+                <span>Respondidas</span>
+                <strong id="answered-count">0/40</strong>
+              </div>
+              <div class="badge">
+                <span>Acertos</span>
+                <strong id="correct-count">0</strong>
+              </div>
+              <div class="badge">
+                <span>Nota</span>
+                <strong id="score-count">0%</strong>
+              </div>
+            </div>
+            <div class="status-note" id="status-note">
+              A correcao aparece ao final da tentativa. As respostas marcadas permanecem visiveis para revisao.
+            </div>
+            <ul class="summary-list" id="summary-list"></ul>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="info-card" aria-labelledby="instructions-title">
+      <h2 id="instructions-title">Como usar</h2>
+      <ul class="info-list">
+        <li>Esta versao contem apenas as 40 questoes objetivas com gabarito correspondente.</li>
+        <li>Voce pode responder em qualquer ordem e deixar questoes em branco se quiser revisar depois.</li>
+        <li>Ao enviar, a pagina mostra acertos, percentual e destaca o que estava certo, errado ou nao respondido.</li>
+      </ul>
+    </section>
+
+    <form class="quiz-form" id="quiz-form"></form>
+    <p class="footer-note">Arquivo local em HTML: funciona sem internet e pode ser aberto em navegadores comuns no Windows.</p>
+  </main>
+
+  <script>
+    const introText = "Aqui estao 10 questoes de multipla escolha para cada um dos quatro principais temas solicitados, criadas com base nas informacoes e analogias presentes nos materiais de estudo disponiveis no AVA.";
+
+    const quizData = [
+      {
+        title: "HTML (Linguagem de Marcacao de Hipertexto)",
+        questions: [
+          {
+            id: 1,
+            prompt: "O que significa \"Semantica\" no HTML?",
+            options: {
+              A: "Colorir e formatar o layout da pagina.",
+              B: "Dar sentido ao conteudo, explicando ao navegador e aos buscadores o que cada bloco representa.",
+              C: "Criar interatividade e funcoes de cliques na pagina.",
+              D: "Hospedar o site na nuvem."
+            }
+          },
+          {
+            id: 2,
+            prompt: "Qual tag semantica representa o cabecalho (\"fronte\") do site, onde geralmente se coloca o titulo principal e o logotipo?",
+            options: {
+              A: "<main>",
+              B: "<nav>",
+              C: "<header>",
+              D: "<footer>"
+            }
+          },
+          {
+            id: 3,
+            prompt: "Qual elemento HTML e responsavel por criar a area que contem as informacoes institucionais e fica localizado na base da pagina?",
+            options: {
+              A: "<section>",
+              B: "<header>",
+              C: "<footer>",
+              D: "<div>"
+            }
+          },
+          {
+            id: 4,
+            prompt: "Para definir um bloco exclusivo de links de navegacao (como o menu principal do site), qual tag HTML5 e a mais adequada?",
+            options: {
+              A: "<nav>",
+              B: "<main>",
+              C: "<button>",
+              D: "<a>"
+            }
+          },
+          {
+            id: 5,
+            prompt: "Como organizamos uma lista nao ordenada (com bolinhas) em HTML?",
+            options: {
+              A: "Usamos <ol> para a lista e <item> para os itens.",
+              B: "Usamos <ul> para criar a lista e <li> para definir cada item individualmente.",
+              C: "Usamos <nav> para a lista e <link> para os itens.",
+              D: "Usamos <list> e <text>."
+            }
+          },
+          {
+            id: 6,
+            prompt: "Qual e a funcao da tag <section> em uma pagina web?",
+            options: {
+              A: "Agrupar o menu fixo no topo.",
+              B: "Exibir imagens.",
+              C: "Definir e agrupar uma area tematica especifica do conteudo.",
+              D: "Receber dados de formulario do usuario."
+            }
+          },
+          {
+            id: 7,
+            prompt: "O que representam os elementos de <h1> a <h6>?",
+            options: {
+              A: "Paragrafos de texto comum.",
+              B: "Tabelas e suas celulas.",
+              C: "Titulos hierarquicos, sendo o <h1> o maior e principal.",
+              D: "Imagens redimensionaveis."
+            }
+          },
+          {
+            id: 8,
+            prompt: "Quando precisamos envolver o conteudo central e unico da pagina, qual elemento estrutural deve ser usado?",
+            options: {
+              A: "<main>",
+              B: "<nav>",
+              C: "<thead>",
+              D: "<div>"
+            }
+          },
+          {
+            id: 9,
+            prompt: "Em uma tabela organizada cenicamente, quais tags sao utilizadas em conjunto com <table> para separar semanticamente os titulos das colunas e o corpo de dados?",
+            options: {
+              A: "<ul> e <li>",
+              B: "<section> e <p>",
+              C: "<thead> e <tbody>",
+              D: "<h1> e <nav>"
+            }
+          },
+          {
+            id: 10,
+            prompt: "Qual tag de enfase e utilizada no texto para destacar palavras-chave importantes e dar valor semantico (como as palavras \"Formacao\" e \"Etica\")?",
+            options: {
+              A: "<button>",
+              B: "<strong>",
+              C: "<img>",
+              D: "<a>"
+            }
+          }
+        ]
+      },
+      {
+        title: "CSS (Folhas de Estilo em Cascata)",
+        questions: [
+          {
+            id: 11,
+            prompt: "No CSS, qual comando ativa o \"modo flexivel\" em um elemento para organizar seu layout?",
+            options: {
+              A: "justify-content: flex;",
+              B: "display: flex;",
+              C: "align-items: center;",
+              D: "position: sticky;"
+            }
+          },
+          {
+            id: 12,
+            prompt: "Qual a principal diferenca entre as propriedades margin e padding?",
+            options: {
+              A: "Margin e o espacamento interno, enquanto padding e o espacamento externo.",
+              B: "Ambas representam a mesma coisa dependendo do navegador.",
+              C: "Padding e o espaco interno (entre o conteudo e a borda), enquanto margin e o espaco externo (fora da borda).",
+              D: "Margin muda a cor do fundo e padding muda a cor do texto."
+            }
+          },
+          {
+            id: 13,
+            prompt: "Qual propriedade no Flexbox e usada para alinhar itens horizontalmente (no eixo principal)?",
+            options: {
+              A: "display",
+              B: "align-items",
+              C: "justify-content",
+              D: "z-index"
+            }
+          },
+          {
+            id: 14,
+            prompt: "Como removemos os marcadores padroes (bolinhas) de uma lista (<ul>) usando CSS?",
+            options: {
+              A: "list-style: none;",
+              B: "border-collapse: collapse;",
+              C: "padding: 0;",
+              D: "display: none;"
+            }
+          },
+          {
+            id: 15,
+            prompt: "Como referenciamos uma \"classe\" (class) do HTML no arquivo de estilos CSS?",
+            options: {
+              A: "Utilizando a hashtag #.",
+              B: "Escrevendo o nome da tag diretamente, sem simbolos.",
+              C: "Utilizando o ponto final . antes do nome da classe.",
+              D: "Envolvendo em aspas duplas \" \"."
+            }
+          },
+          {
+            id: 16,
+            prompt: "Qual e a finalidade da pseudo-classe :hover em um elemento (como um botao ou link)?",
+            options: {
+              A: "Altera o tamanho do elemento permanentemente.",
+              B: "Aplica um estilo que so aparece quando o usuario passa o cursor do mouse sobre ele.",
+              C: "Centraliza o elemento na tela.",
+              D: "Remove o elemento visualmente."
+            }
+          },
+          {
+            id: 17,
+            prompt: "Se voce deseja que o menu de navegacao \"grude\" no topo da tela enquanto o usuario rola a pagina, qual propriedade deve ser utilizada?",
+            options: {
+              A: "display: flex;",
+              B: "position: sticky; top: 0;",
+              C: "z-index: 1000;",
+              D: "border-radius: 12px;"
+            }
+          },
+          {
+            id: 18,
+            prompt: "O que a propriedade z-index: 1000 realiza na estilizacao de um site?",
+            options: {
+              A: "Determina a espessura da borda.",
+              B: "Define a altura exata do elemento em pixels.",
+              C: "Estabelece a profundidade (camada), garantindo que o elemento fique sobreposto (na frente) aos demais na rolagem.",
+              D: "Torna o elemento transparente."
+            }
+          },
+          {
+            id: 19,
+            prompt: "Qual propriedade e responsavel por arredondar os cantos de um elemento HTML (como um cartao ou botao)?",
+            options: {
+              A: "box-shadow",
+              B: "border-radius",
+              C: "padding",
+              D: "margin"
+            }
+          },
+          {
+            id: 20,
+            prompt: "Para unificar as bordas das celulas de uma tabela para que ela nao pareca \"datada\", utilizamos qual regra no CSS?",
+            options: {
+              A: "vertical-align: middle;",
+              B: "border-radius: 50%;",
+              C: "background: linear-gradient;",
+              D: "border-collapse: collapse;"
+            }
+          }
+        ]
+      },
+      {
+        title: "JavaScript",
+        questions: [
+          {
+            id: 21,
+            prompt: "Em comparacao com a analogia da estrutura do corpo humano de uma pagina (HTML) e sua aparencia (CSS), qual e o papel do JavaScript?",
+            options: {
+              A: "Ser o endereco na nuvem.",
+              B: "Ser o esqueleto e titulos do site.",
+              C: "Ser os musculos e o sistema nervoso, adicionando comportamento e interatividade.",
+              D: "Salvar imagens no banco de dados."
+            }
+          },
+          {
+            id: 22,
+            prompt: "A linguagem JavaScript e \"fracamente tipada\". O que isso significa na pratica, por exemplo, na operacao 10 + \"5\"?",
+            options: {
+              A: "O programa ira travar e apontar erro de tipagem.",
+              B: "O resultado sera obrigatoriamente um erro logico que impede o navegador de abrir.",
+              C: "O JavaScript converte o numero 10 em texto e o une (concatena) com \"5\", resultando em \"105\".",
+              D: "O resultado matematico sera exato, totalizando 15."
+            }
+          },
+          {
+            id: 23,
+            prompt: "Qual e a principal vantagem de declarar variaveis com let ao inves de var?",
+            options: {
+              A: "Funciona para criar funcoes ao inves de dados.",
+              B: "Tem escopo de bloco, o que impede que a variavel \"vaze\" para partes nao desejadas do codigo.",
+              C: "Impede o uso de numeros, aceitando apenas texto.",
+              D: "Permite criar variaveis que nunca podem ter o valor alterado."
+            }
+          },
+          {
+            id: 24,
+            prompt: "O simbolo = (sinal de igual) em JavaScript significa o que na declaracao de variaveis?",
+            options: {
+              A: "Igualdade matematica absoluta.",
+              B: "Divisao de termos.",
+              C: "Adicao de dois valores.",
+              D: "Atribuicao, ou seja, o valor da direita e \"guardado\" na variavel da esquerda (recebe)."
+            }
+          },
+          {
+            id: 25,
+            prompt: "Qual comando atua como \"ponte\" entre o JavaScript e o HTML para localizar e alterar um elemento especifico da pagina?",
+            options: {
+              A: "console.log()",
+              B: "document.getElementById(\"idElemento\")",
+              C: "if(condicao)",
+              D: "let variavel = novoValor"
+            }
+          },
+          {
+            id: 26,
+            prompt: "Se precisarmos descobrir o \"resto\" de uma divisao em um calculo matematico no JavaScript, qual operador utilizamos?",
+            options: {
+              A: "+",
+              B: "/",
+              C: "% (Modulo)",
+              D: "*"
+            }
+          },
+          {
+            id: 27,
+            prompt: "O que representa uma estrutura if / else na logica do JavaScript?",
+            options: {
+              A: "Apenas um agrupamento de variaveis.",
+              B: "Uma estrutura de laco para repetir o mesmo codigo infinitamente.",
+              C: "Uma estrutura de selecao que permite ao programa tomar decisoes (bifurcacao) baseadas em condicoes Verdadeiras ou Falsas.",
+              D: "Uma requisicao feita ao servidor de banco de dados."
+            }
+          },
+          {
+            id: 28,
+            prompt: "Quando precisamos que todas as condicoes sejam verdadeiras para o sistema liberar acesso (como ser maior de idade E ter o ingresso), usamos qual operador logico?",
+            options: {
+              A: "|| (OU)",
+              B: "&& (E / AND)",
+              C: "! (NAO)",
+              D: "% (Modulo)"
+            }
+          },
+          {
+            id: 29,
+            prompt: "Em qual situacao usamos o operador logico || (OU / OR) no controle de fluxo?",
+            options: {
+              A: "Apenas quando queremos inverter completamente a logica.",
+              B: "Quando exigimos que ambas as sentencas de validacao sejam sempre falsas.",
+              C: "Quando precisamos que pelo menos uma condicao seja verdadeira para o codigo ser executado.",
+              D: "Quando queremos concatenar strings e numeros."
+            }
+          },
+          {
+            id: 30,
+            prompt: "Qual a funcao do operador de negacao ! (NOT) no JavaScript?",
+            options: {
+              A: "Executar a soma de dois valores.",
+              B: "Enviar erro para o console do navegador.",
+              C: "Inverter o valor logico de uma condicao, como !estaChovendo (se nao esta chovendo).",
+              D: "Apagar o conteudo de uma variavel let."
+            }
+          }
+        ]
+      },
+      {
+        title: "Git e GitHub",
+        questions: [
+          {
+            id: 31,
+            prompt: "Qual e a principal diferenca entre o Git e o GitHub?",
+            options: {
+              A: "O Git e usado para alterar imagens, e o GitHub para alterar o HTML.",
+              B: "Ambos sao servicos online, mas de empresas concorrentes.",
+              C: "O Git e o sistema local de controle de versoes (no seu computador), enquanto o GitHub e a plataforma em nuvem para hospedar esses projetos.",
+              D: "Nao ha diferenca, sao nomes diferentes para o mesmo software."
+            }
+          },
+          {
+            id: 32,
+            prompt: "Qual e a analogia usada no material para explicar o comando git init?",
+            options: {
+              A: "Passar as compras no caixa.",
+              B: "Fazer uma copia de um livro da biblioteca.",
+              C: "Ligar a camera de seguranca (monitorar a pasta).",
+              D: "Levar as compras para casa."
+            }
+          },
+          {
+            id: 33,
+            prompt: "O que o comando git add . realiza no fluxo de trabalho do Git?",
+            options: {
+              A: "Apaga os arquivos temporarios do computador.",
+              B: "Adiciona todas as mudancas feitas na pasta ao \"carrinho de compras\" (staging area).",
+              C: "Cria o ramo principal (main).",
+              D: "Baixa o projeto da nuvem para o computador."
+            }
+          },
+          {
+            id: 34,
+            prompt: "A analogia de \"passar no caixa e fechar a sacola\" rotulando definitivamente uma versao salva refere-se a qual comando?",
+            options: {
+              A: "git clone",
+              B: "git commit -m \"mensagem\"",
+              C: "git push",
+              D: "git status"
+            }
+          },
+          {
+            id: 35,
+            prompt: "Para enviar as versoes salvas localmente para a \"nuvem\" (GitHub), qual comando utilizamos?",
+            options: {
+              A: "git branch",
+              B: "git clone",
+              C: "git push",
+              D: "git init"
+            }
+          },
+          {
+            id: 36,
+            prompt: "Se voce precisa continuar trabalhando em um projeto no laboratorio e agora vai para um computador diferente que nao possui seus arquivos, voce precisara \"fazer uma copia\" da nuvem. Qual o comando para isso?",
+            options: {
+              A: "git config --global",
+              B: "git push",
+              C: "git commit",
+              D: "git clone"
+            }
+          },
+          {
+            id: 37,
+            prompt: "Antes de comecar a usar o Git em uma maquina pela primeira vez, voce precisa avisar ao sistema quem e o autor das alteracoes. Como isso e feito?",
+            options: {
+              A: "Por meio dos comandos git config --global user.name e user.email.",
+              B: "Acessando o painel de configuracoes do Windows.",
+              C: "Utilizando o comando git branch -M.",
+              D: "Apenas realizando o primeiro git push."
+            }
+          },
+          {
+            id: 38,
+            prompt: "Por que e perigoso executar git init e git add . em pastas gerais como \"Meus Documentos\" ou na \"Area de Trabalho\"?",
+            options: {
+              A: "Porque a Microsoft restringe essas pastas, travando o computador.",
+              B: "Porque o Git tentara enviar todos os arquivos e fotos do seu computador inteiro para a nuvem, criando uma enorme confusao.",
+              C: "Porque apaga automaticamente os arquivos locais.",
+              D: "Porque cria uma nova ramificacao principal oculta."
+            }
+          },
+          {
+            id: 39,
+            prompt: "O que o comando git status mostra para voce?",
+            options: {
+              A: "Configura sua senha do GitHub.",
+              B: "Retorna se ha arquivos listados sendo alterados e confirma que voce esta no diretorio correto rastreado pelo Git.",
+              C: "Retorna o link oficial onde seu site foi hospedado na internet.",
+              D: "Forca o upload dos seus dados mesmo se a internet cair."
+            }
+          },
+          {
+            id: 40,
+            prompt: "Ao utilizar a ferramenta gratuita do GitHub Pages para transformar seu projeto em um site ao vivo, qual regra estrita sobre o arquivo principal deve ser seguida?",
+            options: {
+              A: "O arquivo tem que ser gerado em JavaScript.",
+              B: "Deve-se compactar o arquivo num formato ZIP.",
+              C: "O arquivo inicial deve se chamar exatamente index.html e estar na pasta raiz do repositorio.",
+              D: "Deve existir apenas dentro da pasta /trote/."
+            }
+          }
+        ]
+      }
+    ];
+
+    const answerKey = [
+      "B", "C", "C", "A", "B", "C", "C", "A", "C", "B",
+      "B", "C", "C", "A", "C", "B", "B", "C", "B", "D",
+      "C", "C", "B", "D", "B", "C", "C", "B", "C", "C",
+      "C", "C", "B", "B", "C", "D", "A", "B", "B", "C"
+    ];
+
+    const form = document.getElementById("quiz-form");
+    const introElement = document.getElementById("intro-text");
+    const submitButton = document.getElementById("submit-button");
+    const resetButton = document.getElementById("reset-button");
+    const answeredCount = document.getElementById("answered-count");
+    const correctCount = document.getElementById("correct-count");
+    const scoreCount = document.getElementById("score-count");
+    const statusNote = document.getElementById("status-note");
+    const summaryList = document.getElementById("summary-list");
+
+    introElement.textContent = introText;
+
+    function createElement(tag, className, text) {
+      const element = document.createElement(tag);
+      if (className) element.className = className;
+      if (text !== undefined) element.textContent = text;
+      return element;
+    }
+
+    function renderQuiz() {
+      quizData.forEach((section, sectionIndex) => {
+        const sectionCard = createElement("section", "section-card");
+
+        const sectionHeader = createElement("div", "section-header");
+        const title = createElement("h2", null, section.title);
+        const meta = createElement("span", "section-meta", `${section.questions.length} questoes`);
+        sectionHeader.append(title, meta);
+        sectionCard.appendChild(sectionHeader);
+
+        const questionList = createElement("div", "question-list");
+
+        section.questions.forEach((question, questionIndex) => {
+          const questionCard = createElement("article", "question-card");
+          questionCard.dataset.questionId = String(question.id);
+
+          const fieldset = document.createElement("fieldset");
+          const legend = document.createElement("legend");
+          const indexBadge = createElement(
+            "span",
+            "question-index",
+            `${sectionIndex + 1}.${questionIndex + 1}`
+          );
+          const questionText = createElement("p", "question-text", question.prompt);
+          legend.append(indexBadge, questionText);
+
+          const optionsContainer = createElement("div", "options");
+
+          Object.entries(question.options).forEach(([letter, optionText]) => {
+            const label = createElement("label", "option");
+            label.dataset.letter = letter;
+
+            const input = document.createElement("input");
+            input.type = "radio";
+            input.name = `question-${question.id}`;
+            input.value = letter;
+            input.setAttribute("aria-label", `Questao ${question.id}, alternativa ${letter}`);
+
+            const copy = createElement("span", "option-copy");
+            const letterChip = createElement("span", "option-letter", letter);
+            const optionContent = createElement("span", "option-text", optionText);
+            copy.append(letterChip, optionContent);
+
+            label.append(input, copy);
+            optionsContainer.appendChild(label);
+          });
+
+          const feedback = createElement("div", "feedback");
+          feedback.id = `feedback-${question.id}`;
+
+          fieldset.append(legend, optionsContainer, feedback);
+          questionCard.appendChild(fieldset);
+          questionList.appendChild(questionCard);
+        });
+
+        sectionCard.appendChild(questionList);
+        form.appendChild(sectionCard);
+      });
+    }
+
+    function findQuestionCard(questionId) {
+      return form.querySelector(`.question-card[data-question-id="${questionId}"]`);
+    }
+
+    function clearVisualFeedback() {
+      form.querySelectorAll(".question-card").forEach((card) => {
+        card.classList.remove("correct", "incorrect", "unanswered");
+      });
+
+      form.querySelectorAll(".option").forEach((option) => {
+        option.classList.remove("is-correct", "is-incorrect");
+      });
+
+      form.querySelectorAll(".feedback").forEach((feedback) => {
+        feedback.className = "feedback";
+        feedback.textContent = "";
+      });
+    }
+
+    function updateProgressOnly() {
+      const totalQuestions = answerKey.length;
+      const answered = form.querySelectorAll('input[type="radio"]:checked').length;
+      answeredCount.textContent = `${answered}/${totalQuestions}`;
+    }
+
+    function setSummary(items) {
+      summaryList.replaceChildren();
+      items.forEach((text) => {
+        const item = document.createElement("li");
+        item.textContent = text;
+        summaryList.appendChild(item);
+      });
+    }
+
+    function gradeQuiz() {
+      clearVisualFeedback();
+
+      const totalQuestions = answerKey.length;
+      let answered = 0;
+      let correct = 0;
+      const missedQuestions = [];
+      const unansweredQuestions = [];
+
+      answerKey.forEach((correctLetter, index) => {
+        const questionId = index + 1;
+        const questionCard = findQuestionCard(questionId);
+        const selected = form.querySelector(`input[name="question-${questionId}"]:checked`);
+        const correctOption = questionCard.querySelector(`.option[data-letter="${correctLetter}"]`);
+        const feedback = document.getElementById(`feedback-${questionId}`);
+
+        if (correctOption) {
+          correctOption.classList.add("is-correct");
+        }
+
+        if (!selected) {
+          unansweredQuestions.push(questionId);
+          questionCard.classList.add("unanswered");
+          feedback.classList.add("visible", "warning");
+          feedback.textContent = `Questao em branco. Resposta correta: ${correctLetter}.`;
+          return;
+        }
+
+        answered += 1;
+        const selectedOption = selected.closest(".option");
+
+        if (selected.value === correctLetter) {
+          correct += 1;
+          questionCard.classList.add("correct");
+          feedback.classList.add("visible", "success");
+          feedback.textContent = "Resposta correta.";
+        } else {
+          missedQuestions.push(questionId);
+          questionCard.classList.add("incorrect");
+          selectedOption.classList.add("is-incorrect");
+          feedback.classList.add("visible", "error");
+          feedback.textContent = `Resposta incorreta. Resposta correta: ${correctLetter}.`;
+        }
+      });
+
+      const percent = Math.round((correct / totalQuestions) * 100);
+      answeredCount.textContent = `${answered}/${totalQuestions}`;
+      correctCount.textContent = String(correct);
+      scoreCount.textContent = `${percent}%`;
+
+      const summaryItems = [
+        `${correct} acerto(s) de ${totalQuestions}.`,
+        `${totalQuestions - correct} questao(oes) ficaram erradas ou em branco.`,
+        unansweredQuestions.length
+          ? `Questoes em branco: ${unansweredQuestions.join(", ")}.`
+          : "Nenhuma questao em branco.",
+        missedQuestions.length
+          ? `Questoes respondidas incorretamente: ${missedQuestions.join(", ")}.`
+          : "Nenhuma questao marcada incorretamente."
+      ];
+      setSummary(summaryItems);
+
+      statusNote.className = "status-note success";
+      statusNote.textContent = `Correcao concluida. Voce acertou ${correct} de ${totalQuestions} questoes e alcancou ${percent}%.`;
+    }
+
+    function resetQuiz() {
+      form.reset();
+      clearVisualFeedback();
+      answeredCount.textContent = `0/${answerKey.length}`;
+      correctCount.textContent = "0";
+      scoreCount.textContent = "0%";
+      statusNote.className = "status-note";
+      statusNote.textContent = "A correcao aparece ao final da tentativa. As respostas marcadas permanecem visiveis para revisao.";
+      summaryList.replaceChildren();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    renderQuiz();
+    updateProgressOnly();
+
+    form.addEventListener("change", updateProgressOnly);
+    submitButton.addEventListener("click", gradeQuiz);
+    resetButton.addEventListener("click", resetQuiz);
+  </script>
+</body>
+</html>
