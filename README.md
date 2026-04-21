@@ -1,41 +1,57 @@
-# Trote Solidario 2026
+# Gabriel Belarmino Martins | Portfolio de Projetos
 
-Pagina web interativa em HTML para aplicacao de um simulado com 40 questoes objetivas, correcao automatica e destaque visual das respostas.
+Este repositorio agora funciona como uma vitrine tecnica para apresentar projetos, estudos e evolucao pratica em desenvolvimento web e logica de programacao.
 
-## Sobre o projeto
+## O que esta publicado
 
-Este repositorio publica uma prova interativa em formato de formulario local, pronta para abrir no navegador e tambem compativel com GitHub Pages.
+- `index.html`: pagina principal do portfolio
+- `styles.css`: identidade visual da home
+- `projetos/trote-unifacef/`: site multipagina do Trote Solidario UniFACEF 2026
+- `projetos/portugol/`: colecao de exercicios em Portugol e uma pagina propria para navegacao
 
-Recursos principais:
+## Destaques do portfolio
 
-- 40 questoes de multipla escolha organizadas em 4 temas
-- correcao automatica ao final da tentativa
-- destaque para respostas corretas, incorretas e em branco
-- layout responsivo para computador e celular
-- funcionamento sem dependencias externas
+### 1. Trote Solidario UniFACEF 2026
 
-## Arquivos principais
+Projeto web com HTML, CSS e JavaScript, com:
 
-- `index.html`: pagina principal do simulado
+- navegacao entre varias paginas
+- pagina inicial institucional
+- calculadora de pontos
+- contador regressivo
+- seccoes organizadas com identidade visual propria
 
-## Como usar localmente
+Entrada principal:
 
-1. Baixe ou clone este repositorio.
-2. Abra o arquivo `index.html` em qualquer navegador moderno.
-3. Marque as alternativas desejadas.
-4. Clique em `Enviar e corrigir` para ver a nota e o gabarito visual.
+- `projetos/trote-unifacef/Trote-UniFACEF-Oficial.html`
 
-## Publicacao com GitHub Pages
+### 2. Avanco em Portugol
 
-Para publicar este projeto com GitHub Pages:
+Colecao com 10 exercicios que mostram progressao em:
 
-1. Acesse as configuracoes do repositorio no GitHub.
+- calculos matematicos
+- conversoes
+- manipulacao de variaveis
+- problemas contextualizados
+- exercicio final mais completo com orcamento de materiais de construcao
+
+Entrada principal:
+
+- `projetos/portugol/index.html`
+
+## Objetivo deste repositorio
+
+A ideia e usar o GitHub como uma especie de "LinkedIn dos codigos": um espaco onde empresas e avaliadores consigam enxergar projetos reais, organizacao, clareza e evolucao tecnica.
+
+## Como publicar no GitHub Pages
+
+1. Abra `Settings` no repositorio.
 2. Entre em `Pages`.
 3. Em `Build and deployment`, selecione a branch `main`.
-4. Escolha a pasta raiz `/ (root)`.
-5. Salve as configuracoes.
+4. Escolha a pasta `/ (root)`.
+5. Salve.
 
-Depois disso, a pagina devera ficar disponivel em:
+URL esperada:
 
 `https://gabsaatechlab.github.io/trote-solidario-2026/`
 
