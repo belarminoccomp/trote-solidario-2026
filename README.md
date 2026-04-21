@@ -12,7 +12,7 @@
 
 ## 👨‍💻 Sobre mim
 
-Sou estudante de desenvolvimento web com foco em construção de projetos práticos e organização de portfólio técnico.  
+Sou estudante de Ciência da Computação na Uni-FACEF com foco em construção de projetos práticos, resoluções de problemas e organização de portfólio técnico.  
 Busco demonstrar evolução contínua em lógica de programação, estruturação de código e desenvolvimento de interfaces.
 
 Este repositório representa minha evolução prática, reunindo projetos acadêmicos e aplicações desenvolvidas com foco em clareza, organização e aplicação real.
@@ -100,7 +100,8 @@ Exercício final com simulação de orçamento de materiais de construção.
 - Adicionar novos projetos práticos  
 - Refinar design e experiência do usuário  
 - Evoluir a complexidade das aplicações JavaScript  
-- Implementar boas práticas de código e padronização  
+- Implementar boas práticas de código e padronização
+- Adquirir maior conhecimento em DevOps e em Cybersecurity
 
 ---
 
