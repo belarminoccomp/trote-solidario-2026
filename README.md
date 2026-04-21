@@ -1,77 +1,117 @@
-# Gabriel Belarmino Martins | Portfolio de Projetos
+# Gabriel Belarmino Martins | Portfólio de Projetos
 
-Este repositorio funciona como uma vitrine tecnica para apresentar projetos, estudos e evolucao pratica em desenvolvimento web e logica de programacao.
+<p align="center">
+  <img src="https://img.shields.io/badge/HTML5-Estrutura-orange?style=for-the-badge&logo=html5">
+  <img src="https://img.shields.io/badge/CSS3-Estilização-blue?style=for-the-badge&logo=css3">
+  <img src="https://img.shields.io/badge/JavaScript-Interatividade-yellow?style=for-the-badge&logo=javascript">
+  <img src="https://img.shields.io/badge/Git-Versionamento-red?style=for-the-badge&logo=git">
+  <img src="https://img.shields.io/badge/GitHub-Portfólio-black?style=for-the-badge&logo=github">
+</p>
 
-## O que esta publicado
+---
 
-- `index.html`: pagina principal do portfolio
-- `styles.css`: identidade visual da home
-- `projetos/trote-unifacef/`: site multipagina do Trote Solidario UniFACEF 2026
-- `projetos/portugol/`: trilha principal de exercicios em Portugol
-- `projetos/portugol-estudos-complementares/`: segunda trilha com exercicios adicionais em Portugol
+## 👨‍💻 Sobre mim
 
-## Destaques do portfolio
+Sou estudante de desenvolvimento web com foco em construção de projetos práticos e organização de portfólio técnico.  
+Busco demonstrar evolução contínua em lógica de programação, estruturação de código e desenvolvimento de interfaces.
 
-### 1. Trote Solidario UniFACEF 2026
+Este repositório representa minha evolução prática, reunindo projetos acadêmicos e aplicações desenvolvidas com foco em clareza, organização e aplicação real.
 
-Projeto web com HTML, CSS e JavaScript, com:
+---
 
-- navegacao entre varias paginas
-- pagina inicial institucional
-- calculadora de pontos
-- contador regressivo
-- seccoes organizadas com identidade visual propria
+## 🌐 Acesse o projeto online
 
-Entrada principal:
+🔗 https://gabsaatechlab.github.io/trote-solidario-2026/
 
-- `projetos/trote-unifacef/Trote-UniFACEF-Oficial.html`
+---
 
-### 2. Fundamentos de algoritmos em Portugol
+## 🎥 Demonstração do projeto
 
-Colecao com 10 exercicios que mostram progressao em:
+![Preview do projeto](./assets/preview.gif)
 
-- calculos matematicos
-- conversoes
-- manipulacao de variaveis
-- problemas contextualizados
-- exercicio final mais completo com orcamento de materiais de construcao
+---
 
-Entrada principal:
+## 📁 Estrutura do projeto
 
-- `projetos/portugol/index.html`
+- `index.html` → página principal do portfólio  
+- `styles.css` → identidade visual  
+- `projetos/trote-unifacef/` → projeto web completo  
+- `projetos/portugol/` → exercícios de lógica  
 
-### 3. Estudos complementares em Portugol
+---
 
-Colecao com 11 exercicios adicionais, com foco maior em:
+## ⭐ Projetos em destaque (Cases)
 
-- estruturas de decisao
-- classificacao por regras
-- calendarios e selecao por casos
-- reajustes e percentuais
-- simulacoes de atendimento e consumo
+### 🏆 Trote Solidário UniFACEF 2026
 
-Entrada principal:
+**Contexto:**  
+Projeto desenvolvido com base em um evento real, com o objetivo de apresentar informações, regras e dinâmica da atividade.
 
-- `projetos/portugol-estudos-complementares/index.html`
+**Solução desenvolvida:**  
+Criação de um site multipágina com navegação estruturada, organização visual e funcionalidades interativas.
 
-## Objetivo deste repositorio
+**Principais funcionalidades:**
+- Navegação entre páginas  
+- Página institucional  
+- Calculadora de pontos  
+- Contador regressivo  
 
-A ideia e usar o GitHub como uma especie de "LinkedIn dos codigos": um espaco onde empresas e avaliadores consigam enxergar projetos reais, organizacao, clareza e evolucao tecnica.
+**Tecnologias utilizadas:**  
+HTML5, CSS3, JavaScript  
 
-## Como publicar no GitHub Pages
+📍 `projetos/trote-unifacef/Trote-UniFACEF-Oficial.html`
 
-1. Abra `Settings` no repositorio.
-2. Entre em `Pages`.
-3. Em `Build and deployment`, selecione a branch `main`.
-4. Escolha a pasta `/ (root)`.
-5. Salve.
+---
 
-URL esperada:
+### 💻 Exercícios em Portugol
 
-`https://gabsaatechlab.github.io/trote-solidario-2026/`
+**Contexto:**  
+Prática de lógica de programação com foco em desenvolvimento progressivo.
 
-## Autor
+**Solução desenvolvida:**  
+Coleção de exercícios organizados em trilha de aprendizado, com aumento gradual de complexidade.
 
-- Gabriel Belarmino Martins
-- GitHub: [@gabsaatechlab](https://github.com/gabsaatechlab)
-- E-mail: gabrielmartins160108@gmail.com
+**Principais abordagens:**
+- Cálculos matemáticos  
+- Conversões  
+- Manipulação de variáveis  
+- Problemas aplicados  
+
+**Destaque:**  
+Exercício final com simulação de orçamento de materiais de construção.
+
+📍 `projetos/portugol/index.html`
+
+---
+
+## 📚 Aprendizados
+
+- Organização de projetos em estrutura profissional  
+- Separação de responsabilidades (HTML, CSS, JS)  
+- Construção de interfaces com foco em usabilidade  
+- Aplicação de lógica de programação em cenários reais  
+- Uso do Git e GitHub para versionamento e portfólio  
+
+---
+
+## 🔧 Próximos passos
+
+- Melhorar responsividade (mobile-first)  
+- Adicionar novos projetos práticos  
+- Refinar design e experiência do usuário  
+- Evoluir a complexidade das aplicações JavaScript  
+- Implementar boas práticas de código e padronização  
+
+---
+
+## 🎯 Objetivo
+
+Transformar este GitHub em uma vitrine profissional, demonstrando evolução técnica, organização e capacidade de desenvolvimento para oportunidades na área de tecnologia.
+
+---
+
+## 👨‍💻 Autor
+
+**Gabriel Belarmino Martins**  
+🔗 https://github.com/gabsaatechlab  
+📧 gabrielmartins160108@gmail.com  
