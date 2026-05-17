@@ -1,8 +1,8 @@
-# Introducao ao Node.js
+# JavaScript — Introdução ao Node.js
 
 Esta pasta preserva a atividade enviada em `node-exercicios-javascript.zip` e organiza seus primeiros scripts em JavaScript executados em ambiente Node.js.
 
-## Arquivos incluidos
+## Arquivos incluídos
 
 - `node-exercicios-javascript.zip`: arquivo original da atividade.
 - `package.json`
@@ -10,23 +10,32 @@ Esta pasta preserva a atividade enviada em `node-exercicios-javascript.zip` e or
 - `estacao.js`
 - `restaurante.js`
 - `jakenpo.js`
+- `README.md`
 
-## Scripts
+## Objetivo desta etapa
+
+Esta fase registra o início do uso de JavaScript fora do navegador, com scripts simples executados em ambiente Node.js. O foco principal está na lógica condicional, na estruturação básica de arquivos e na leitura de problemas contextualizados.
+
+## Descrição dos scripts
 
 ### `estacao.js`
 
-Relaciona o numero de um mes a uma estacao do ano usando `if`, `else if` e `else`.
+Relaciona o número de um mês à estação do ano correspondente, por meio de encadeamento com `if`, `else if` e `else`.
 
 ### `restaurante.js`
 
-Simula um menu simples de restaurante usando `switch` para exibir prato e preco.
+Simula um pequeno cardápio, utilizando `switch` para associar opções numéricas a pratos e preços.
 
 ### `jakenpo.js`
 
-Implementa a logica basica de jokenpo com comparacao de jogadas e definicao do vencedor.
+Implementa a lógica básica de Jokenpô, comparando as jogadas e determinando o resultado final.
 
-## Observacoes
+## Observações técnicas
 
-- Os arquivos foram preservados como registro academico da atividade.
-- O projeto usa `prompt-sync` no `package.json`, mesmo que os exemplos atuais estejam com valores fixos nos scripts.
-- Esta fase representa a transicao da logica basica para pequenos programas executados fora do navegador.
+- O projeto utiliza `prompt-sync` no `package.json`, embora os exemplos atuais estejam configurados com valores fixos nos próprios arquivos.
+- Os materiais foram mantidos em sua forma original para preservar o contexto da atividade acadêmica.
+- Esta etapa representa a transição entre lógica fundamental e pequenos programas executados localmente.
+
+## Papel desta fase na trilha
+
+A introdução ao Node.js amplia a leitura do portfólio, pois mostra o momento em que os exercícios deixam de ser apenas exemplos conceituais e passam a ser organizados em uma estrutura mais próxima de um pequeno projeto executável.

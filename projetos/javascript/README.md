@@ -1,42 +1,46 @@
-# JavaScript - Linha do Tempo de Estudos
+# JavaScript — Linha do Tempo de Estudos
 
-Esta pasta foi criada para organizar minha evolucao em JavaScript como uma trilha continua dentro do portfolio.
+Esta pasta foi criada para organizar minha evolução em JavaScript como uma trilha contínua dentro do portfólio.
+
+## Finalidade
+
+A proposta desta estrutura é registrar, de maneira formal e progressiva, os conteúdos da disciplina de JavaScript ao longo do curso. Em vez de reunir arquivos soltos, esta pasta foi pensada para funcionar como um histórico acadêmico e técnico, permitindo:
+
+- preservar atividades originais;
+- documentar o conteúdo estudado;
+- reunir códigos em arquivos reais, e não apenas em capturas ou textos descritivos;
+- acompanhar a evolução entre materiais antigos e novos.
 
 ## Estrutura
 
-- `index.html`: pagina principal da trilha de JavaScript.
-- `javascript.css`: identidade visual da pagina da trilha.
-- `while-repeticao/`: materiais sobre while, break e continue.
-- `node-introducao/`: primeiros scripts em Node.js e arquivo zip original da atividade.
+- `index.html`: página principal da trilha de JavaScript.
+- `javascript.css`: identidade visual da página da trilha.
+- `while-repeticao/`: materiais da etapa de estruturas de repetição e controle de fluxo.
+- `node-introducao/`: primeiros scripts em Node.js e arquivo original da atividade em `.zip`.
 
-## Objetivo
+## Etapas iniciais
 
-A ideia desta pasta e funcionar como uma linha do tempo academica:
+### 1. Estruturas de repetição
 
-- guardar atividades recentes e antigas;
-- permitir comparacao de evolucao;
-- mostrar organizacao tecnica no GitHub;
-- criar um historico profissional da principal disciplina do curso.
+Material voltado para:
 
-## Fases iniciais
+- `while`;
+- `break`;
+- `continue`;
+- validação de entrada;
+- acumuladores e contadores;
+- menus interativos;
+- exercícios de lógica, como FizzBuzz e número primo.
 
-### 1. Estruturas de repeticao
+### 2. Introdução ao Node.js
 
-Material com 12 exercicios voltados para:
+Coleção inicial de scripts voltada para:
 
-- `while`
-- `break`
-- `continue`
-- validacao de entrada
-- acumuladores
-- menus
-- FizzBuzz
+- estruturas condicionais com `if`, `else if` e `else`;
+- uso de `switch`;
+- organização básica de arquivos JavaScript;
+- primeiros exemplos executados em ambiente Node.js.
 
-### 2. Introducao ao Node.js
+## Observação
 
-Colecao inicial com scripts simples voltados para:
-
-- condicionais com `if` e `else if`
-- `switch`
-- logica de comparacao
-- estrutura basica de projeto com `package.json`
+Esta pasta foi planejada para crescer ao longo da graduação. Portanto, novos módulos, exercícios, projetos e versões futuras poderão ser acrescentados mantendo a mesma lógica de organização e documentação.
